@@ -2,25 +2,25 @@
  *
  * Custom Typography
  *
- * Designed, built by web-create 
- * 
+ * Designed, built by web-create
+ *
  * Email: gayanvirajith@gmail.com
  *
  * CONTENTS
  *
  * TYPOGRAPHY
  * Headings         - Base Heading styles
- * Strong           - Strong element styles 
- * Italic           - Italic element styles 
- * Paragraphe       - Paragraphe element styles 
- * Alignments       - Text alignment styles 
- * Transformations  - Text transformation styles 
- * List             - List styles 
- * Blockquotes      - Blockquotes styles 
+ * Strong           - Strong element styles
+ * Italic           - Italic element styles
+ * Paragraphe       - Paragraphe element styles
+ * Alignments       - Text alignment styles
+ * Transformations  - Text transformation styles
+ * List             - List styles
+ * Blockquotes      - Blockquotes styles
  * Address          - Address element styles
  * Table            - Table element styles
  * Code             - Code styles
- * 
+ *
  */
 
 
@@ -99,7 +99,7 @@ i, em { font-style: italic; }
 
 
 /*------------------------------------*\
-    #TYPOGRAPHY-PARAGRAPHE 
+    #TYPOGRAPHY-PARAGRAPHE
 \*------------------------------------*/
 
 p {
@@ -314,9 +314,8 @@ code {
 
 pre {
   display: block;
-  margin-top: 0;
-  margin-bottom: 1rem;
-  padding: 1rem;
+  margin: 0 -2rem 1rem;
+  padding: 1rem 2rem;
   line-height: 1.4;
   font-size: 15px;
   white-space: pre;
@@ -325,12 +324,24 @@ pre {
   word-wrap: break-word;
   background-color: #f9f9f9;
   border-radius: 3px;
+  position: relative;
+  border-width: 1px 0;
+  border-style: solid;
+  border-color: #ddd;
 }
 pre code {
   padding: 0;
   font-size: 100%;
   color: inherit;
   background-color: transparent;
+
+  &:after {
+    content: attr(data-lang);
+    position: absolute;
+    right: 2rem;
+    top: 0.5rem;
+    font-size: 80%;
+  }
 }
 
 /* Pygments via Jekyll */
