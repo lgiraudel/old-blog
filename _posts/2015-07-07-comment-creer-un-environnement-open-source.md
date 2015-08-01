@@ -4,6 +4,7 @@ title:  "Comment créer un environnement open source"
 date:   2015-07-07
 comments: true
 translation: true
+banner_image: posts/how-to-create-an-opensource-stack/amalfi-coast-by-night.jpg
 
 translated: true
 translation_url: 2015/07/07/how-to-create-an-opensource-stack

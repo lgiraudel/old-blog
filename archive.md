@@ -7,6 +7,7 @@ banner_image: sample-banner-image-3.jpg
 
 <div>
   {% for post in site.posts %}
+    {% if post.translation %}{% continue %}{% endif %}
     {% capture currentyear %}{{post.date | date: "%Y"}}{% endcapture %}
     {% if currentyear != year %}
       {% unless forloop.first %}

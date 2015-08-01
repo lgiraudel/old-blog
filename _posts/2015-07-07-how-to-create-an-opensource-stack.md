@@ -3,6 +3,7 @@ layout: post
 title:  "How to create an opensource stack"
 date:   2015-07-07
 comments: true
+banner_image: posts/how-to-create-an-opensource-stack/amalfi-coast-by-night.jpg
 
 translated: true
 translation_url: 2015/07/07/comment-creer-un-environnement-open-source

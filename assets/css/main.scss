@@ -214,12 +214,12 @@ img {
 
 .header {
   background: $color-white;
-  margin-bottom: 3rem;
+  margin-bottom: 0rem;
   border-bottom: 1px solid $gray-lighter;
   width: 100%;
   padding: 1em 0;
   @include MQ(M){
-    margin-bottom: 4rem;
+    margin-bottom: 0rem;
     display: table;
     height: 50px;
   }
@@ -535,7 +535,8 @@ img {
   background: $color-white;
   @include border-radius(.2em);
   box-shadow: 0 0 10px rgba(#000, .1);
-  overflow: hidden;
+  //overflow: hidden;
+  position: relative;
 }
 
 /* Article title / Page title */
@@ -628,6 +629,13 @@ img {
     margin: -2em -2em 0 -2em;
   }
 }
+.banner-image {
+  height: calc(100vh - 50px - 10em);
+  overflow:hidden;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
 
 
 
@@ -686,4 +694,28 @@ img {
   p { @include font-size(14px); }
   img { float:left; margin-right: 1em; }
   ul { margin-bottom: 0; }
+}
+
+.post-header {
+  position: relative;
+}
+.post-date {
+  position: absolute;
+  top: 0;
+  left: -1em;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  padding: 0.5em 0.8em;
+  text-align: center;
+  transform: translate(-100%, 0);
+  border-radius: 0.2em;
+}
+.post-date .month {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.post-date .day {
+  font-weight: bold;
+  font-size: 180%;
+  margin: 0.2em 0;
 }
