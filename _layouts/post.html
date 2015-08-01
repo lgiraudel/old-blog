@@ -19,6 +19,9 @@ layout: default
 
   <header class="post-header">
     <h1 class="post-title">{{ page.title }}</h1>
+    {% if page.translated %}
+      <a href="/{{ page.translation_url }}/">Read the {{ page.translation_language }} version</a>
+    {% endif %}
     <p class="post-meta">
     {% if (page.categories.size > 0 %}
       <span class="categories">

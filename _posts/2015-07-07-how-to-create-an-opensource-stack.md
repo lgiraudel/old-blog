@@ -3,6 +3,10 @@ layout: post
 title:  "How to create an opensource stack"
 date:   2015-07-07
 comments: true
+
+translated: true
+translation_url: 2015/07/07/comment-creer-un-environnement-open-source
+translation_language: french
 ---
 
 Let's try to create an opensource stack with [Github](https://github.com), [TravisCI](https://travis-ci.org) and [CodeClimate](https://codeclimate.com).
@@ -49,14 +53,14 @@ Before pluging Travis, we need to add some tests in our application.
 
 We will use the combo [Mocha](http://mochajs.org/) + [Chai](http://chaijs.com/) + [Sinon](http://sinonjs.org/). Mocha is a test framework, Chai is an assert library and Sinon is a Mocking / Stubbing library.
 
-Let's add a `package.json` file with npm init command:
+Let's add a `package.json` file with `npm init` command:
 
 {% highlight bash %}
 $ npm init -f
 $ npm install --save-dev mocha chai sinon
 {% endhighlight %}
 
-In the generated package.json file, there is a `scripts` property:
+In the generated `package.json` file, there is a `scripts` property:
 
 {% highlight json %}
 "scripts": {
@@ -64,7 +68,7 @@ In the generated package.json file, there is a `scripts` property:
 }
 {% endhighlight %}
 
-The test command is launched when we use the `npm test` command:
+The command associated to the `test` property is launched when we use the `npm test` command:
 
 {% highlight bash %}
 $ npm test
@@ -180,7 +184,7 @@ $ npm test
   1 passing (54ms)
 {% endhighlight %}
 
-Yean! We're done with tests, commit all this stuff:
+Yeah! We're done with tests, commit all this stuff:
 {% highlight bash %}
 $ git add package.json test index.js
 $ git commit -m 'First commit with code and tests!'
@@ -221,11 +225,11 @@ $ git push origin master
 
 If you go back to Travis and check the status of your mooh project, you will see that Travis is building your project with all specified versions of Node & IO.
 
-![Travis activation](/assets/images/posts/how-to-create-an-opensource-stack/first-build.png)
+![First build in Travis](/assets/images/posts/how-to-create-an-opensource-stack/first-build.png)
 
-![Travis activation](/assets/images/posts/how-to-create-an-opensource-stack/sinon_error.png)
+![Build error in Travis](/assets/images/posts/how-to-create-an-opensource-stack/sinon_error.png)
 
-Node 0.6 & 0.8 versions seems to have some troubles with Mocha, Chai and Sinon, let's remove those versions in the .travis.yml file. Let's also remove IO versions in order to have a faster build.
+Node 0.6 & 0.8 versions seems to have some troubles with Mocha, Chai and Sinon, let's remove those versions in the `.travis.yml` file. Let's also remove IO versions in order to have a faster build.
 {% highlight yaml %}
 # .travis.yml
 
@@ -238,7 +242,7 @@ node_js:
 
 Let's commit again, Travis should be green now :)
 
-![Travis activation](/assets/images/posts/how-to-create-an-opensource-stack/successful_build.png)
+![Green build in Travis](/assets/images/posts/how-to-create-an-opensource-stack/successful_build.png)
 
 Ok, that's it for Travis for now.
 
@@ -248,7 +252,7 @@ The main strength of Github is the Pull Request mechanism. To illustrate it, we 
 
 Create a new Github account and fork the `Mooh` project.
 
-![Travis activation](/assets/images/posts/how-to-create-an-opensource-stack/fork.png)
+![Project fork](/assets/images/posts/how-to-create-an-opensource-stack/fork.png)
 
 Clone the forked project:
 {% highlight bash %}
@@ -286,23 +290,23 @@ At this point, the modifications are in the forked repository (owned by the seco
 
 Go to [https://github.com/lgiraudel/mooh/compare/master...lgiraudel-purch:master](https://github.com/lgiraudel/mooh/compare/master...lgiraudel-purch:master) and create a Pull Request.
 
-![Travis activation](/assets/images/posts/how-to-create-an-opensource-stack/pull_request_creation.png)
+![Pull request creation](/assets/images/posts/how-to-create-an-opensource-stack/pull_request_creation.png)
 
 If you wait few secondes and then refresh the Pull Request, you'll notice that it's updated by Travis with some informations telling us that tests are currently running (with a link to see details in Travis).
 
-![Travis activation](/assets/images/posts/how-to-create-an-opensource-stack/pr_running.png)
+![Pull request running](/assets/images/posts/how-to-create-an-opensource-stack/pr_running.png)
 
 At the end, we learn that some checks have failed.
 
-![Travis activation](/assets/images/posts/how-to-create-an-opensource-stack/pr_failed_tests.png)
+![Pull request failed](/assets/images/posts/how-to-create-an-opensource-stack/pr_failed_tests.png)
 
 If we open the details of one of the 3 builds, we can see that test have failed. Of course, we forgot to update the tests!
 
-![Travis activation](/assets/images/posts/how-to-create-an-opensource-stack/travis_fail.png)
+![Travis failure](/assets/images/posts/how-to-create-an-opensource-stack/travis_fail.png)
 
 If you open the PR with the original user, you'll see that you can still merge the PR: Travis just adds some informations, it doesn't block the merging process.
 
-![Travis activation](/assets/images/posts/how-to-create-an-opensource-stack/owner_can_merge.png)
+![Owner still can merge](/assets/images/posts/how-to-create-an-opensource-stack/owner_can_merge.png)
 
 Let's update our tests to pass them green.
 {% highlight bash %}
@@ -329,9 +333,9 @@ We don't need to do anything on Github: when we update our forked repository, th
 
 Once Travis has finished his job, the PR is tagged as green and can be merged with confidence.
 
-![Travis activation](/assets/images/posts/how-to-create-an-opensource-stack/travis_success.png)
+![Travis success](/assets/images/posts/how-to-create-an-opensource-stack/travis_success.png)
 
-![Travis activation](/assets/images/posts/how-to-create-an-opensource-stack/pr_green.png)
+![Pull request is green](/assets/images/posts/how-to-create-an-opensource-stack/pr_green.png)
 
 Travis tracks PR but other branches too. When a PR is merged into a branch (like master), the tests are run on the modified branch.
 
@@ -382,14 +386,14 @@ Lines        : 100% ( 12/12 )
 ================================================================================
 {% endhighlight %}
 
-So we can replace the call to mocha in package.json by the call to istanbul:
+So we can replace the call to mocha in `package.json` by the call to istanbul:
 {% highlight json %}
   "scripts": {
     "test": "istanbul cover _mocha"
   },
 {% endhighlight %}
 
-To send data to CodeClimate, we need to install the codeclimate-test-reporter module:
+To send data to CodeClimate, we need to install the `codeclimate-test-reporter` module:
 {% highlight bash %}
 $ npm install --save-dev codeclimate-test-reporter
 {% endhighlight %}
@@ -421,11 +425,11 @@ Travis will detect a new commit, run the tests and send the result to CodeClimat
 
 In CodeClimate, you should be able to see the code coverage report here: [https://codeclimate.com/github/lgiraudel/mooh/coverage](https://codeclimate.com/github/lgiraudel/mooh/coverage)
 
-![Travis activation](/assets/images/posts/how-to-create-an-opensource-stack/codeclimate_coverage.png)
+![Code coverage in CodeClimate](/assets/images/posts/how-to-create-an-opensource-stack/codeclimate_coverage.png)
 
 You also can see that we let some code style errors in the code here: [https://codeclimate.com/github/lgiraudel/mooh/index.js](https://codeclimate.com/github/lgiraudel/mooh/index.js)
 
-![Travis activation](/assets/images/posts/how-to-create-an-opensource-stack/codeclimate_codestyle.png)
+![Code style in CodeClimate](/assets/images/posts/how-to-create-an-opensource-stack/codeclimate_codestyle.png)
 
 ## Add some dynamic info in your GitHub repository
 
@@ -433,14 +437,14 @@ It could be awesome to display in your Github repository the build state (red or
 
 In Travis, click on the "build unknown" (or "build passing") tag, it will open a popup. Choose markdown syntax and copy the generated text to past it in your Readme file of your repository (you can edit it online).
 
-![Travis activation](/assets/images/posts/how-to-create-an-opensource-stack/travis_tag.png)
+![Tag creation in Travis](/assets/images/posts/how-to-create-an-opensource-stack/travis_tag.png)
 
 You can do the same thing with CodeClimate by clicking on the "coverage 100%" tag. In the new page, choose the markdown syntax and copy the generated text to past it in the Readme file.
 
-![Travis activation](/assets/images/posts/how-to-create-an-opensource-stack/codeclimate_tag.png)
+![Tag creation in CodeClimate](/assets/images/posts/how-to-create-an-opensource-stack/codeclimate_tag.png)
 
-![Travis activation](/assets/images/posts/how-to-create-an-opensource-stack/readme_edit.png)
+![Readme.md edition](/assets/images/posts/how-to-create-an-opensource-stack/readme_edit.png)
 
-![Travis activation](/assets/images/posts/how-to-create-an-opensource-stack/readme.png)
+![Tags display](/assets/images/posts/how-to-create-an-opensource-stack/readme.png)
 
 That's it, now you just need to find many contributors to your project :)
