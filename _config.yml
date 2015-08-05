@@ -3,7 +3,7 @@ title: Loïc Giraudel
 tagline:
 email: lgiraudel@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-  Hello, I'm a french web developer working at Purch.
+  Hello, I'm a French web developer working at Purch.
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://lgiraudel.github.io" # the base hostname & protocol for your site
 logourl: /assets/images/logo.png # Site logo
